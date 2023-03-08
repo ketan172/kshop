@@ -10,8 +10,9 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth'
 import { RouterModule } from '@angular/router';
 import { NgbModule  } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { CustomFormsModule } from 'ng2-validation';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
+
 
 import { environment } from 'src/environments/environment';
 import { AppComponent } from './app.component';
@@ -58,6 +59,7 @@ import { ProductService } from './product.service';
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,
         AngularFireDatabaseModule,
+        DataTablesModule,
         NgbModule,
         FormsModule,
         ReactiveFormsModule,
@@ -71,8 +73,9 @@ import { ProductService } from './product.service';
           {path:'order-success' , component: OrderSuccessComponent, canActivate:[AuthGaurd] },
           {path:'my/orders' , component: MyOrdersComponent, canActivate:[AuthGaurd] },
           
-          {path:'admin/products' , component: AdminProductsComponent, canActivate:[AuthGaurd,AdminAuthGaurd] },
           {path:'admin/products/new' , component: ProductFormComponent , canActivate:[AuthGaurd,AdminAuthGaurd] },
+          {path:'admin/products/:id' , component: ProductFormComponent , canActivate:[AuthGaurd,AdminAuthGaurd] },
+          {path:'admin/products' , component: AdminProductsComponent, canActivate:[AuthGaurd,AdminAuthGaurd] },
           {path:'admin/orders' , component: AdminOrdersComponent, canActivate:[AuthGaurd,AdminAuthGaurd] },
    
 
